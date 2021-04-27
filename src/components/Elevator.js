@@ -1,10 +1,10 @@
 import React, { useEffect, Fragment } from 'react'
 import ElevatorSvg from './ElevatorSvg'
 
-const Elevator = () => {
+const Elevator = ({color}) => {
     return (
             <div className="elevator">
-            <ElevatorSvg color="black"/>
+            <ElevatorSvg color={color}/>
             </div>
     )
   }

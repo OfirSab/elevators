@@ -1,11 +1,11 @@
 import './App.css';
-import Preference from './components/Preference'
+// import Preference from './components/Preference'
 import Building from './components/Building'
 
 
 function App() {
   const elevatorNumber = 5;
-  const floorsNumber = 10;
+  const floorsNumber = 8;
   return (
     <div className="App">
       <header className="App-header">
