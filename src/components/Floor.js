@@ -5,7 +5,6 @@ const floor = ({numberOfElevators,floorNumber}) => {
         squars: [],
         name: "",
     }
-    // console.log(floorNumber);
     switch(parseInt(floorNumber)){
         case 0:
             floors.name = "Ground Floor"
