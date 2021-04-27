@@ -1,7 +1,7 @@
 import './App.css';
-import Elevators from './components/Elevators'
 import Preference from './components/Preference'
 import Building from './components/Building'
+
 
 function App() {
   const elevatorNumber = 5;

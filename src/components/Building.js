@@ -1,23 +1,23 @@
 import React from 'react'
 import Elevator from './Elevator'
+import Floor from './Floor'
 
-const Building = () => {
-    const elevators = 4;
-    const elevatorsArr = [];
-    for (let i = 0; i < elevators; i++) {
-        elevatorsArr.push(
+const Building = ({numberOfElevators,numberOfFloors}) => {
+    const elevators = []
+    for (let i = 0; i < numberOfElevators; i++) {
+      elevators.push(
           <Elevator key={i}></Elevator>
         );
-        // elevatorsObjectArr.push({
-        //   index: i,
-        //   elevatorId: [`e${i + 1}`],
-        //   currentFloor: 0,
-        //   isFree: true
-        // });
       }
+      const arr = [];
+      for(var i=0;i<numberOfFloors;i++){ arr.push(i)}
     return (
         <div className="building">
-            {elevatorsArr}
+          <div className="elevators">
+          {elevators}
+          </div>
+            {arr.map((index)=>(<Floor numberOfElevators={numberOfElevators} floorNumber={index} key={index}/>))}
+            
         </div>
     )
 }
