@@ -1,10 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import Square from './Square'
 
-const Floor = ({numberOfElevators,floorNumber,call}) => {
+const Floor = ({numberOfElevators,floorNumber,call,timeToArrive}) => {
     const [time,setTime] = useState("")
-    const clicked = false;
-    const floors = {
+     const floors = {
         squars: [],
         name: "",
     }
@@ -27,29 +26,16 @@ const Floor = ({numberOfElevators,floorNumber,call}) => {
     }
     for (let i = 0; i < numberOfElevators; i++) {
         floors.squars.push(
-            // <div className="floor-square" key={i}></div>
             <Square text={time} key={i}/>
         );
       }
-    // setWholeFloor(floors)
-    // console.log(wholeFloor);
-    const setCountTime = (time,elevatorNumber) => {
-        // floors[elevatorNumber].innerHTML = time
-        // floors.squars[0].innerText = time
-        // floors.squars[elevatorNumber].props.text = "100"
-        // floors.squars[elevatorNumber].props.text = "1"
-        // setTime("2")
-        console.log(floors.squars[elevatorNumber]);
-    }
       const clickHandle = () => {
         call(floors.name.slice(0,1))
-        setCountTime(time,0)
       }
     return (
         <div className="floor">
             <p>{floors.name}</p>
             {floors.squars}
-            {/* {wholeFloor.squars} */}
             <button type="button" className="btn btn-success" onClick={clickHandle} >Call</button>
         </div>
     )

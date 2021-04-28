@@ -9,9 +9,18 @@ const Building = ({numberOfElevators,numberOfFloors}) => {
       MOVING: "red",
       ARRIVED: "springgreen",
     };
+    var btnStatus = {
+      FREE: {btn:"btn btn-success",text:"Call"},
+      WATING: {btn:"btn btn-danger",text:"Wating"},
+      ARRIVED: {btn:"btn btn-outline-success",text:"Arrived"}
+    };
+    var countTimer = Array(numberOfFloors).fill(7)
+    const [countTimerr,setCountTimerr] = useState(()=>{return Array(numberOfFloors).fill(8)})
     const GROUND_FLOOR = (numberOfFloors-1) * 60 + 45;
-    const SPEED = 3;
+    const SPEED = 4;
     const [elevatorDOM,setElevatorDOM] = useState(null)
+    var floorSquares = document.querySelectorAll(`.floor-square`);
+    var floors = document.querySelectorAll(`.floor`);
 
     const elevators = [];
     useEffect(() => {
@@ -43,44 +52,58 @@ const Building = ({numberOfElevators,numberOfFloors}) => {
         elevator.query.style.display = "inline-block"
        }
 
-       const changeElevatorColor = (elevator,newStatus,time) => {
+      const changeElevatorColor = (floor,elevator,newStatus,time) => {
         elevator.query.childNodes[0].childNodes[0].attributes[1].value = newStatus
          setTimeout(()=>{
           elevator.query.childNodes[0].childNodes[0].attributes[1].value = status.FREE
+          changeCallBtn(floor,btnStatus.FREE)
          },time)
        }
+
+       const changeCallBtn = (floor,newStatus) => {
+        floors[floor].children[floors[floor].children.length-1].className = newStatus.btn
+        floors[floor].children[floors[floor].children.length-1].innerText = newStatus.text
+       }
+
+
+
+
       // Getting elevator and floor number and Update the floor in accordance
       const updateFloor = (elevator,floor) =>{
         const position = GROUND_FLOOR - (floor * 60);
-        var countTimer = 0;
         var pos = elevator.query.style.top.slice(0,-2)
+        var calcSpeed = SPEED * 0.5
+        var seconds = Math.floor((Math.abs((elevator.floor-floor)*60)/(33.3*calcSpeed)))
+        changeCallBtn(floor,btnStatus.WATING,seconds)
+        setCountTime(seconds-1,floor,elevator.id);
+        elevator.query.childNodes[0].childNodes[0].attributes[1].value = status.MOVING
         var direction = "";
 
         // Set the direction
         {elevator.floor < floor? direction = "UP" : direction = "DOWN"}
         // Updating the floor number
         elevator.floor = floor;
-
         const update = (direction) =>{
           switch(direction){
             case "UP":
               if(pos > position){
                 elevator.query.style.top = pos  + "px"
-                pos = Number(pos) - Number(SPEED);
+                pos = Number(pos) - Number(calcSpeed);
               }else{
                 clearInterval(updateElevator)
-                changeElevatorColor(elevator,status.ARRIVED,2000)
-                console.log(floorsDivs);
+                changeElevatorColor(floor,elevator,status.ARRIVED,2000)
+                changeCallBtn(floor,btnStatus.ARRIVED)
               }
               break;
             case "DOWN":
               if(pos < position){
                 elevator.query.style.top = pos  + "px"
-                pos = Number(pos) + Number(SPEED);
+                pos = Number(pos) + Number(calcSpeed);
               }
               else{
                 clearInterval(updateElevator)
-                changeElevatorColor(elevator,status.ARRIVED,2000)
+                changeElevatorColor(floor,elevator,status.ARRIVED,2000)
+                changeCallBtn(floor,btnStatus.ARRIVED)
               }
               break;
             default:
@@ -107,18 +130,34 @@ const Building = ({numberOfElevators,numberOfFloors}) => {
       // Call elevator handle
      const call = (floor) =>{
       if(floor === 'G'){floor = 0};
-      // setFloor(elevatorDOM[0],floor)
       updateFloor(elevatorDOM[0],floor)
+
      }
      const floorsDivs = []
      for (let i = 0; i < numberOfFloors; i++) {
        floorsDivs.push(
-         <Floor call={call} numberOfElevators={numberOfElevators} floorNumber={i} key={i}/>
+         <Floor call={call} timeToArrive={countTimerr[i]} numberOfElevators={numberOfElevators} floorNumber={i} key={i}/>
          );
        }
+
+
+       const setCountTime = (timer,floor,elevatorNumber) => {
+        const calculate = floor * 5 + elevatorNumber;
+        floorSquares[calculate].children[elevatorNumber].innerText = `${timer+1} Sec`
+        changeCallBtn(floor,btnStatus.WATING)
+        const interval = setInterval(()=>{
+          if(timer>0){
+            floorSquares[calculate].children[elevatorNumber].innerText = `${timer} Sec`
+            timer--;
+          }else{
+            setInterval(()=>{clearInterval(interval)},900)
+            floorSquares[calculate].children[elevatorNumber].innerText = ""
+          }
+        },1100)
+    }
+
     return (
         <div className="building">
-            {/* {arr.map((index)=>(<Floor call={call} numberOfElevators={numberOfElevators} floorNumber={index} key={index}/>))} */}
             {floorsDivs}
             <div className="elevators">
           {elevatorsDivs}
