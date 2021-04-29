@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useState } from 'react';
-import Preference from './components/Preference'
+import Preferences from './components/Preferences'
 import Building from './components/Building'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Elevators Exercise</h2>
-        {(elevator&&floor&&speed) ? <Building numberOfElevators={elevator} numberOfFloors={floor} speed={speed}/> : <Preference setValues={setValues}/>}
+        {(elevator&&floor&&speed) ? <Building numberOfElevators={elevator} numberOfFloors={floor} speed={speed}/> : <Preferences setValues={setValues}/>}
       </header>
+      <Footer/>
     </div>
   );
 }

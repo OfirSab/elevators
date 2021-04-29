@@ -1,7 +1,6 @@
 .App {
 	text-align: center;
 }
-
 .App-header {
 	background-color: rgb(238, 238, 238);
 	min-height: 100vh;
@@ -12,11 +11,9 @@
 	font-size: calc(10px + 2vmin);
 	color: rgb(85, 85, 85);
 }
-
 .App-link {
 	color: #61dafb;
 }
-
 .building {
 	width: 60%;
 	height: 70%;
@@ -39,7 +36,6 @@ p {
 	font-size: 16px;
 	color: #000000;
 	font-weight: bold;
-	/* background-color:springgreen */
 }
 .floor-square {
 	width: 120px;
@@ -73,7 +69,6 @@ p {
 .drop-btn {
 	width: 50px;
 }
-
 .btn-success {
 	background-color: rgb(0, 208, 142);
 }
@@ -88,12 +83,11 @@ p {
 	margin-left: 5px;
 }
 .type {
-	/* width: 100px; */
-	text-align: center;
-	margin-right: 15px;
+	text-align: right;
+	margin-right: 18px;
 	font-size: 22px;
 	color: #525252;
-	padding-top: 8px;
+	padding-top: 4px;
 	font-weight: bold;
 }
 .pagination {
@@ -112,4 +106,10 @@ nav {
 }
 .p-btn {
 	margin-top: 50px;
+}
+.copy {
+	color: rgb(0, 208, 142);
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	text-decoration: none;
 }
