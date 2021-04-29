@@ -1,16 +1,23 @@
 import './App.css';
-// import Preference from './components/Preference'
+import React, { useState } from 'react';
+import Preference from './components/Preference'
 import Building from './components/Building'
 
 
 function App() {
-  const elevatorNumber = 5;
-  const floorsNumber = 8;
+  const [elevator, setElevator] = useState(null);
+  const [floor, setFloor] = useState(null);
+  const [speed, setSpeed] = useState(null);
+  const setValues = (el,fl,sp) => {
+    setElevator(el);
+    setFloor(fl)
+    setSpeed(sp)
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Elevators</h1>
-        <Building numberOfElevators={elevatorNumber} numberOfFloors={floorsNumber}/>
+        <h2>Elevators Exercise</h2>
+        {(elevator&&floor&&speed) ? <Building numberOfElevators={elevator} numberOfFloors={floor} speed={speed}/> : <Preference setValues={setValues}/>}
       </header>
     </div>
   );

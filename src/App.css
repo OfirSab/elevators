@@ -2,47 +2,27 @@
 	text-align: center;
 }
 
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
 .App-header {
 	background-color: rgb(238, 238, 238);
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* justify-content: center; */
+	padding-top: 30px;
 	font-size: calc(10px + 2vmin);
-	color: white;
+	color: rgb(85, 85, 85);
 }
 
 .App-link {
 	color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
 .building {
 	width: 60%;
 	height: 70%;
 	align-self: center;
 	display: flex;
 	flex-direction: column-reverse;
-	margin-top: 40px;
 }
 .floor {
 	display: flex;
@@ -88,10 +68,12 @@ p {
 	margin-left: 25px;
 	border: none;
 	font-size: 16px;
-}
-.btn {
 	font-weight: 500;
 }
+.drop-btn {
+	width: 50px;
+}
+
 .btn-success {
 	background-color: rgb(0, 208, 142);
 }
@@ -104,4 +86,30 @@ p {
 	color: gray;
 	margin-top: 15px;
 	margin-left: 5px;
+}
+.type {
+	/* width: 100px; */
+	text-align: center;
+	margin-right: 15px;
+	font-size: 22px;
+	color: #525252;
+	padding-top: 8px;
+	font-weight: bold;
+}
+.pagination {
+	padding-top: 20px;
+}
+nav {
+	padding-top: 60px;
+}
+.pagination {
+	align-items: center;
+}
+.selection {
+	width: 20px;
+	padding-left: 30px;
+	padding-top: 5px;
+}
+.p-btn {
+	margin-top: 50px;
 }
