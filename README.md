@@ -1,9 +1,9 @@
 # Elevators Exercise
 
-This project is an elevators exercise. Its simulator an elevator systems logic by the following roules:
-1.The elevator that will answer the call is the closest to the floor call.
-2.If all the elevators are unavailable, the call will automatic insert to a calls queue and execute when some elevator will free.
-3.In the first screen you can choose the number of elevators, floors and speed. ENJOY!
+## This project is an elevators exercise. Its simulator an elevator systems logic by the following roules:
+#### 1.The elevator that will answer the call is the closest to the floor call.
+#### 2.If all the elevators are unavailable, the call will automatic insert to a calls queue and execute when some elevator will free.
+#### 3.In the first screen you can choose the number of elevators, floors and speed. ENJOY!
 
 ## Live Demo:
 
