@@ -18,7 +18,7 @@
 
 To running the project on a local machine:
 
-### 1.npm init
+### 1.npm i init
 ### 2.npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
